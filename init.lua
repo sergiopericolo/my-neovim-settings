@@ -1,11 +1,7 @@
--- #####################################################################################--
--- ##  NEOVIM SETTINGS - monochromo theme  #############################################--
--- #####################################################################################--
+--################################### SETTINGS ########################################--
 
 
-
-
--- plugin --------------------------------------------------------------------------------
+-- plugin
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
@@ -17,7 +13,6 @@ if not vim.loop.fs_stat(lazypath) then
         lazypath,
     })
 end
-
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
@@ -30,17 +25,21 @@ require("lazy").setup({
     "hrsh7th/cmp-nvim-lsp",
     "L3MON4D3/LuaSnip",
     "aca/emmet-ls",
+    {
+    	"sphamba/smear-cursor.nvim",
+  	opts = {
+    	    stiffness = 0.8,
+            railing_stiffness = 0.5,
+    	    distance_stop_animating = 0.1,
+  		}
+    }
 })
-------------------------------------------------------------------------------- \plugin --
 
 
 
 
 
-
-
-
--- general_settings ----------------------------------------------------------------------
+-- general settings
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.mouse = "a"
@@ -53,85 +52,25 @@ vim.opt.clipboard = "unnamedplus"
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 vim.opt.termguicolors = true
---------------------------------------------------------------------- \general_settings --
 
 
 
 
 
+-- theme
+require("core.palette")
 
 
 
--- theme ---------------------------------------------------------------------------------
-local white = "#F2F4F6"
-local grey1 = "#B5BCCE"
-local grey2 = "#747F95"
-local grey3 = "#4C5466"
-
-vim.api.nvim_set_hl(0, "Normal",                    { fg = "#D8DEE9", bg = "none" })
-vim.api.nvim_set_hl(0, "NormalFloat",               { bg = "none" })
-vim.api.nvim_set_hl(0, "LineNr",                    { fg = "#4C566A", bg = "none" })
-vim.api.nvim_set_hl(0, "SignColumn",                { bg = "none" })
-vim.api.nvim_set_hl(0, "EndOfBuffer",               { fg = "#3B4252", bg = "none" })
-
-vim.api.nvim_set_hl(0, "Identifier",                { fg = grey1 })
-vim.api.nvim_set_hl(0, "Boolean",                   { fg = white })
-vim.api.nvim_set_hl(0, "Number",                    { fg = white })
-vim.api.nvim_set_hl(0, "PreProc",                   { fg = grey1 })
-vim.api.nvim_set_hl(0, "Special",                   { fg = grey1 })
-vim.api.nvim_set_hl(0, "Delimiter",                 { fg = grey2, bold = true })
-
-vim.api.nvim_set_hl(0, "Constant",                  { fg = white })
-vim.api.nvim_set_hl(0, "@constant",                 { fg = white })
-vim.api.nvim_set_hl(0, "String",                    { fg = grey2 })
-vim.api.nvim_set_hl(0, "@string",                   { fg = grey2 })
-vim.api.nvim_set_hl(0, "Comment",                   { fg = grey3, bold = true })
-vim.api.nvim_set_hl(0, "@comment",                  { fg = grey3, bold = true })
-vim.api.nvim_set_hl(0, "Operator",                  { fg = grey1 })
-vim.api.nvim_set_hl(0, "@operator",                 { fg = grey1 })
-vim.api.nvim_set_hl(0, "Keyword",                   { fg = white, bold = true })
-vim.api.nvim_set_hl(0, "@keyword",                  { fg = white, bold = true })
-vim.api.nvim_set_hl(0, "Function",                  { fg = white })
-vim.api.nvim_set_hl(0, "@function",                 { fg = white })
-vim.api.nvim_set_hl(0, "Type",                      { fg = white })
-vim.api.nvim_set_hl(0, "@type",                     { fg = white })
-vim.api.nvim_set_hl(0, "Method",                    { fg = grey1 })
-vim.api.nvim_set_hl(0, "@method",                   { fg = grey1 })
-
-vim.api.nvim_set_hl(0, "@variable",                 { fg = grey1 })
-vim.api.nvim_set_hl(0, "@variable.builtin",         { fg = grey1 })
-vim.api.nvim_set_hl(0, "@parameter",                { fg = grey1 })
-vim.api.nvim_set_hl(0, "@property",                 { fg = grey1 })
-vim.api.nvim_set_hl(0, "@field",                    { fg = grey1 })
-vim.api.nvim_set_hl(0, "@punctuation",              { fg = grey2 })
-vim.api.nvim_set_hl(0, "@punctuation.bracket",      { fg = grey2, bold = true })
-vim.api.nvim_set_hl(0, "@punctuation.delimiter",    { fg = grey2, bold = true })
-vim.api.nvim_set_hl(0, "@constructor",              { fg = grey2, bold = true })
-vim.api.nvim_set_hl(0, "@label",                    { fg = grey1 })
-vim.api.nvim_set_hl(0, "@namespace",                { fg = grey1 })
-vim.api.nvim_set_hl(0, "@module",                   { fg = grey1 })
-vim.api.nvim_set_hl(0, "@include",                  { fg = grey1 })
-vim.api.nvim_set_hl(0, "@function.builtin",         { fg = white })
--------------------------------------------------------------------------------- \theme --
-
-
-
-
-
-
-
-
--- LSP -----------------------------------------------------------------------------------
+-- LSP
 require("mason").setup()
 require("mason-lspconfig").setup({
-    ensure_installed = { "pyright", "clangd", "html", "cssls", 
-                         "emmet_ls", "ts_ls", "r_language_server" },
+    ensure_installed = { "pyright", "html", "cssls", "emmet_ls", "ts_ls", "r_language_server" },
 })
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-local servers = { "pyright", "clangd", "html", "cssls", 
-                  "emmet_ls", "ts_ls", "r_language_server" }
+local servers = { "pyright", "html", "cssls", "emmet_ls", "ts_ls", "r_language_server" }
 
 for _, lsp in ipairs(servers) do
     vim.lsp.config(lsp, {
@@ -139,16 +78,21 @@ for _, lsp in ipairs(servers) do
     })
     vim.lsp.enable(lsp)
 end
----------------------------------------------------------------------------------- \LSP --
+
+--ORIGINALE
+--vim.lsp.enable("pyright")
+--vim.lsp.enable("html")
+--vim.lsp.enable("cssls")
+--vim.lsp.enable("emmet_ls")
+--vim.lsp.enable("ts_ls")
+--vim.lsp.enable("r_language_server")
 
 
 
 
 
 
-
-
--- CMP -----------------------------------------------------------------------------------
+-- CMP
 local cmp = require("cmp")
 
 cmp.setup({
@@ -185,21 +129,33 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end,
 })
 
-vim.keymap.set("n", "gl", vim.diagnostic.open_float, { desc = "Read Diagnostic" })
----------------------------------------------------------------------------------- \CMP --
+vim.keymap.set("n", "gl", vim.diagnostic.open_float, { desc = "Leggi diagnostica" })
 
 
 
 
 
-
-
-
--- tree ----------------------------------------------------------------------------------
+-- nvim-tree
 require("nvim-tree").setup({
     view = { width = 30, side = "left" },
     renderer = { icons = { show = { file = true, folder = true } } },
 })
 
+require("nvim-tree").setup({
+  renderer = {
+    icons = {
+      web_devicons = {
+        file = {
+          enable = true,
+          color = false,
+        },
+        folder = {
+          enable = true,
+          color = false,
+        },
+      },
+    },
+  },
+})
+
 vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { silent = true })
---------------------------------------------------------------------------------- \tree --
