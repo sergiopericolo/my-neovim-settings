@@ -40,8 +40,9 @@ hl("StatusLine",   { fg = color1, bg = color5 })
 hl("StatusLineNC", { fg = color4, bg = color_bg })
 hl("TabLine",      { fg = color4, bg = color_bg })
 hl("TabLineSel",   { fg = white, bg = color5, bold = true })
-hl("Visual",       { bg = color5 })
+hl("Visual",       { bg = color4 })
 hl("WinSeparator", { fg = color_bg })
+
 
 -- ==========================================
 -- SINTASSI (Legacy e Tree-sitter accoppiati)
@@ -114,7 +115,7 @@ hl("@punctuation.bracket",   { fg = color3 })
 hl("@punctuation.delimiter", { fg = color3 })
 hl("@punctuation.special",   { fg = color3 })
 
--- Preprocessore, Moduli e Speciali
+-- Preprocessor, Modules e Speciali
 hl("PreProc",      { fg = color3 })
 hl("@include",     { fg = color3 })
 hl("Define",       { fg = color3 })
@@ -127,14 +128,18 @@ hl("@module",      { fg = color2 })
 hl("Underlined", { underline = true })
 hl("Todo",       { fg = white, bg = color4, bold = true })
 
+
+
 -- ==========================================
--- MESSAGGI, PROMPT E COMMAND LINE
+-- MESSAGES, PROMPT E COMMAND LINE
 -- ==========================================
 hl("ModeMsg",  { fg = color2, bold = true })
 hl("MsgArea",  { fg = color1, bg = "none" })
 hl("Question", { fg = white, bold = true })
 hl("Title",    { fg = white, bold = true })
 hl("MoreMsg",  { fg = color2, bold = true })
+
+
 
 -- ==========================================
 -- MARKUP (HTML, Markdown, XML)
@@ -153,9 +158,12 @@ hl("@tag.attribute", { fg = color2 })
 hl("@tag.delimiter", { fg = color3 })
 
 
+
 -- ==========================================
 -- PLUGIN
 -- ==========================================
+
+-- Mason
 hl("MasonNormal", { fg = color1, bg = color_bg })
 hl("MasonHeader", { fg = white, bg = color4, bold = true })
 hl("MasonHeading", { fg = white, bold = true })
@@ -170,6 +178,7 @@ hl("MasonMutedBlock", { fg = color4, bg = color5 })
 hl("MasonMutedBlockBold", { fg = color4, bg = color5, bold = true })
 hl("MasonError", { fg = white, bg = color4, bold = true })
 
+-- Lazy
 hl("LazyNormal", { fg = color1, bg = color_bg })
 hl("LazyH1", { fg = white, bg = color5, bold = true })
 hl("LazyButton", { bg = color5 })
@@ -181,6 +190,7 @@ hl("LazyCommit", { fg = color3 })
 hl("LazyProgressDone", { fg = white, bold = true })
 hl("LazyProgressTodo", { fg = color4 })
 
+-- Telescope
 hl("TelescopeNormal", { fg = color1, bg = color_bg })
 hl("TelescopeBorder", { fg = color_bg, bg = color_bg })
 hl("TelescopePromptBorder", { fg = color_bg, bg = color_bg })
@@ -192,8 +202,9 @@ hl("TelescopeSelection", { bg = color5, bold = true })
 hl("TelescopeSelectionCaret", { fg = white, bg = color5 })
 hl("TelescopeMatching", { fg = white, bold = true, reverse = true })
 
+-- NvimTree
 hl("NvimTreeNormal", { fg = color1, bg = "none" })
-hl("NvimTreeWinSeparator", { fg = color_bg })
+hl("NvimTreeWinSeparator", { fg = color4 })
 hl("NvimTreeIndentMarker", { fg = color4 })
 hl("NvimTreeRootFolder", { fg = white, bold = true })
 hl("NvimTreeFolderIcon", { fg = color3 })
@@ -204,10 +215,12 @@ hl("NvimTreeGitDeleted", { fg = color4 })
 hl("NvimTreeOpenedFile", { fg = white, bold = true })
 hl("NvimTreeSpecialFile", { fg = white, underline = true })
 
+-- GitSigns
 hl("GitSignsAdd", { fg = color2 })
 hl("GitSignsChange", { fg = color3 })
 hl("GitSignsDelete", { fg = color4 })
 
+-- Diagnostics
 hl("DiagnosticError", { fg = white, bold = true })
 hl("DiagnosticWarn", { fg = color1, bold = true })
 hl("DiagnosticInfo", { fg = color2 })
@@ -217,6 +230,7 @@ hl("DiagnosticUnderlineWarn", { underline = true })
 hl("DiagnosticUnderlineInfo", { underline = true })
 hl("DiagnosticUnderlineHint", { underline = true })
 
+-- Nvim Cmp (Completamento)
 hl("CmpItemAbbr", { fg = color1 })
 hl("CmpItemAbbrDeprecated", { fg = color4, strikethrough = true })
 hl("CmpItemAbbrMatch", { fg = white, bold = true })
@@ -226,28 +240,29 @@ hl("CmpItemMenu", { fg = color4 })
 
 
 
+-- ==========================================
+-- EDGE CASES
+-- ==========================================
 
--- ==========================================
--- COMPORTAMENTI NATIVI NASCOSTI / EDGE CASES
--- ==========================================
-hl("NonText",          { fg = color_bg }) -- Nasconde caratteri di lista, spazi e tab
-hl("SpecialKey",       { fg = color_bg }) -- Nasconde tasti speciali
-hl("Conceal",          { fg = color4, bg = "none" }) -- Testo nascosto (es. markdown syntax)
-hl("FloatBorder",      { fg = color_bg, bg = color_bg }) -- Rende invisibili i bordi dei float
+-- UI Hide 
+hl("NonText",          { fg = color_bg })
+hl("SpecialKey",       { fg = color_bg })
+hl("Conceal",          { fg = color4, bg = "none" })
+hl("FloatBorder",      { fg = color_bg, bg = color_bg })
 hl("FloatTitle",       { fg = white, bold = true }) 
 
--- Diff Mode Nativo (vimdiff)
+-- Diff Mode (vimdiff)
 hl("DiffAdd",          { fg = color_bg, bg = color2 })
 hl("DiffChange",       { fg = color_bg, bg = color3 })
 hl("DiffDelete",       { fg = color4, bg = color_bg })
 hl("DiffText",         { fg = color_bg, bg = white, bold = true })
 
--- LSP: Evidenziazione della parola sotto il cursore (References)
+-- LSP Hilights
 hl("LspReferenceText", { bg = color5 })
 hl("LspReferenceRead", { bg = color5 })
 hl("LspReferenceWrite",{ bg = color5, bold = true })
 
--- Spell Check (Controllo Ortografico - usa solo undercurl grigi/bianchi)
+-- Spell Check 
 hl("SpellBad",         { undercurl = true, sp = white })
 hl("SpellCap",         { undercurl = true, sp = color1 })
 hl("SpellLocal",       { undercurl = true, sp = color2 })
