@@ -40,7 +40,7 @@ local servers = {
     -- "powershell_es",   -- PowerShell
     -- "awk_ls",          -- AWK
 
-    -- 🔙 Backend (PHP, Ruby, etc.)
+    -- Backend (PHP, Ruby, etc.)
     -- "intelephense",    -- PHP (Il migliore gratuito per PHP)
     -- "ruby_lsp",        -- Ruby
     -- "solargraph",      -- Ruby (Alternativa storica)
@@ -90,12 +90,10 @@ require("mason-lspconfig").setup({
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 for _, lsp in ipairs(servers) do
-    -- Creiamo le opzioni base
     local opts = {
         capabilities = capabilities,
     }
     
-    -- Se il server è Lua, gli diciamo di ignorare l'errore sulla parola "vim"
     if lsp == "lua_ls" then
         opts.settings = {
             Lua = {
@@ -104,7 +102,6 @@ for _, lsp in ipairs(servers) do
         }
     end
 
-    -- Avviamo il server con le opzioni
     vim.lsp.config(lsp, opts)
     vim.lsp.enable(lsp)
 end
