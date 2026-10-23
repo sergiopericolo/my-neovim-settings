@@ -3,17 +3,11 @@
 -- general settings
 require("core.options")
 
+-- keymaps (se non è già importato)
+pcall(require, "core.keymap")
+
 -- plugin
 require("core.lazy")
 
 -- theme
 require("core.palette")
-
--- LSP
-require("plugins.LSP")
-
--- CMP
-require("plugins.CMP")
-
--- nvim-tree
-require("plugins.nvim_tree")

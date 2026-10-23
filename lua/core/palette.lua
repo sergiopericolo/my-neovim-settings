@@ -212,7 +212,7 @@ hl("NvimTreeFileIcon", { fg = color2 })
 hl("NvimTreeGitDirty", { fg = color2 })
 hl("NvimTreeGitNew", { fg = color1 })
 hl("NvimTreeGitDeleted", { fg = color4 })
-hl("NvimTreeOpenedFile", { fg = white, bold = true })
+hl("NvimTreeOpenedHL", { fg = white, bold = true })
 hl("NvimTreeSpecialFile", { fg = white, underline = true })
 
 -- GitSigns
@@ -238,6 +238,8 @@ hl("CmpItemAbbrMatchFuzzy", { fg = white, bold = true })
 hl("CmpItemKind", { fg = color3 })
 hl("CmpItemMenu", { fg = color4 })
 
+--icons
+hl("DevIconDefault", { fg = light_gray })
 
 
 -- ==========================================
