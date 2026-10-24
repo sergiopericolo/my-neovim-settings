@@ -1,0 +1,14 @@
+.DS_Store
+
+*.swp
+*.swo
+*~
+*.bak
+
+*.log
+
+Session.vim
+sessions/
+
+.netrwhist
+.env

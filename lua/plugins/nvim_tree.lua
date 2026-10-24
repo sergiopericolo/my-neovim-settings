@@ -3,16 +3,16 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
         require("nvim-tree").setup({
-            view = { 
-                width = 30, 
-                side = "left" 
+            view = {
+                width = 30,
+                side = "left"
             },
             renderer = {
-                highlight_opened_files = "all",-- Ricorda di mettere "all" se vuoi evidenziare anche l'icona!
-                icons = { 
-                    show = { 
-                        file = true, 
-                        folder = true 
+                highlight_opened_files = "all",
+                icons = {
+                    show = {
+                        file = true,
+                        folder = true
                     },
                     web_devicons = {
                         file = {

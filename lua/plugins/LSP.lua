@@ -7,88 +7,66 @@ return {
         "aca/emmet-ls",
     },
     config = function()
-        local servers = { 
+        local servers = {
             -- ==========================================================
-            -- SERVER ATTIVI (Pronti all'uso)
+            -- SERVER ATTIVI
             -- ==========================================================
-            "pyright",           -- Python
-            "html",              -- HTML
-            "cssls",             -- CSS, SCSS, LESS
-            "emmet_ls",          -- Espansione tag HTML/CSS
-            "ts_ls",             -- TypeScript / JavaScript
-            "lua_ls",            -- Lua
-            "r_language_server", -- R
+            "pyright",
+            "html",
+            "cssls",
+            "emmet_ls",
+            "ts_ls",
+            "lua_ls",
+            "r_language_server",
+            "gopls",
+            "sqlls",
+            "dockerls",
+            "docker_compose_language_service",
+            "jsonls",
+            "yamlls",
+            "taplo",
+            "marksman",
 
             -- ==========================================================
             -- SERVER DISATTIVATI
             -- ==========================================================
-
-            -- Web Frontend & Framework
-            -- "eslint",          -- JavaScript/TypeScript (Linter ufficiale)
-            -- "tailwindcss",     -- Tailwind CSS
-            -- "volar",           -- Vue.js
-            -- "svelte",          -- Svelte
-            -- "astro",           -- Astro framework
-            -- "htmx",            -- HTMX
-
-            -- Sistemi, C/C++ & Basso Livello
-            -- "clangd",          -- C, C++ (Il più potente per C/C++)
-            -- "cmake",           -- CMake (Configurazione build)
-            -- "rust_analyzer",   -- Rust (Lo standard assoluto)
-            -- "zls",             -- Zig
-            -- "nimls",           -- Nim
-
-            -- Enterprise (Go, Java, .NET)
-            "gopls",           -- Go (Golang)
-            -- "jdtls",           -- Java (Richiede configurazione extra solitamente)
-            -- "omnisharp",       -- C# / .NET
-            -- "kotlin_language_server", -- Kotlin
-
-            -- Scripting & Terminale
-            -- "bashls",          -- Script Bash / Shell
-            -- "powershell_es",   -- PowerShell
-            -- "awk_ls",          -- AWK
-
-            -- Backend (PHP, Ruby, etc.)
-            -- "intelephense",    -- PHP (Il migliore gratuito per PHP)
-            -- "ruby_lsp",        -- Ruby
-            -- "solargraph",      -- Ruby (Alternativa storica)
-            -- "elmls",           -- Elm
-
-            -- Programmazione Funzionale
-            -- "elixirls",        -- Elixir
-            -- "erlangls",        -- Erlang
-            -- "hls",             -- Haskell
-            -- "clojure_lsp",     -- Clojure
-            -- "ocamllsp",        -- OCaml
-            -- "gleam",           -- Gleam
-
-            -- Data Science & Accademia
-            -- "julials",         -- Julia
-            -- "texlab",          -- LaTeX (Documenti scientifici)
-            -- "typst_lsp",       -- Typst (Il nuovo concorrente di LaTeX)
-            -- "fortls",          -- Fortran
-
-            -- Sviluppo Mobile
-            -- "sourcekit",       -- Swift / Objective-C
-            -- "dartls",          -- Dart / Flutter
-
-            -- Database & ORM
-            "sqlls",           -- SQL
-            -- "prismals",        -- Prisma ORM
-
-            -- DevOps, Cloud & Container
-            "dockerls",        -- Dockerfile
-            "docker_compose_language_service", -- Docker Compose
-            -- "terraformls",     -- Terraform
-            -- "helm_ls",         -- Helm (Kubernetes)
-
-            -- Dati, File di Configurazione & Testi
-            "jsonls",          -- JSON
-            "yamlls",          -- YAML
-            "taplo",           -- TOML
-            "marksman",        -- Markdown
-            -- "ltex",            -- Controllo grammaticale/ortografico 
+            -- "eslint",
+            -- "tailwindcss",
+            -- "volar",
+            -- "svelte",
+            -- "astro",
+            -- "htmx",
+            -- "clangd",
+            -- "cmake",
+            -- "rust_analyzer",
+            -- "zls",
+            -- "nimls",
+            -- "jdtls",
+            -- "omnisharp",
+            -- "kotlin_language_server",
+            -- "bashls",
+            -- "powershell_es",
+            -- "awk_ls",
+            -- "intelephense",
+            -- "ruby_lsp",
+            -- "solargraph",
+            -- "elmls",
+            -- "elixirls",
+            -- "erlangls",
+            -- "hls",
+            -- "clojure_lsp",
+            -- "ocamllsp",
+            -- "gleam",
+            -- "julials",
+            -- "texlab",
+            -- "typst_lsp",
+            -- "fortls",
+            -- "sourcekit",
+            -- "dartls",
+            -- "prismals",
+            -- "terraformls",
+            -- "helm_ls",
+            -- "ltex",
         }
 
         require("mason").setup()
@@ -102,7 +80,7 @@ return {
             local opts = {
                 capabilities = capabilities,
             }
-            
+
             if lsp == "lua_ls" then
                 opts.settings = {
                     Lua = {

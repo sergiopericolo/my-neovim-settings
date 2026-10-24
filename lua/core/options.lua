@@ -9,7 +9,6 @@ vim.opt.expandtab = true
 vim.opt.clipboard = "unnamedplus"
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
-vim.opt.termguicolors = true
 vim.opt.scrolloff = 8
 vim.opt.undofile = true
 

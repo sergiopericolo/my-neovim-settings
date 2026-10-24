@@ -1,7 +1,15 @@
+local palette = require("core.palette")
+
 return {
     "nvim-tree/nvim-web-devicons",
-    opts = {
-        color_icons = false, -- Disabilita i colori, rendendo le icone monocromatiche
-        default = true,      -- Usa l'icona di default se non ne trova una specifica
-    }
+    config = function()
+        local devicons = require("nvim-web-devicons")
+
+        devicons.setup({
+            color_icons = false,
+            default = true,
+        })
+
+        devicons.set_default_icon(devicons.get_default_icon().icon, palette.color1)
+    end
 }
