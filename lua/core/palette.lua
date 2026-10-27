@@ -273,8 +273,30 @@ local apply = function()
     hl("RedrawDebugClear",     { bg = color3 })
     hl("RedrawDebugComposed",  { bg = color2 })
     hl("RedrawDebugRecompose", { bg = color4 })
-end
 
+
+    -- ==========================================
+    -- MARKDOWN E LATEX
+    -- ==========================================
+
+    hl("RenderMarkdownMath", { fg = color3, bold = true})
+
+    hl("RenderMarkdownH1", { fg = white, bg = color5, bold = true })
+    hl("RenderMarkdownH2", { fg = color2, bold = true })
+    hl("RenderMarkdownH3", { fg = color3, bold = true })
+    hl("RenderMarkdownH4", { fg = color4, bold = true })
+    hl("RenderMarkdownH5", { fg = color4 })
+    hl("RenderMarkdownH6", { fg = color4 })
+
+    hl("RenderMarkdownCode", { fg = color1, bold = true, bg = color3 })
+    hl("RenderMarkdownCodeInline", { fg = color1, bold = true, bg = color3 })
+
+    hl("RenderMarkdownCode", { fg = color2, bg = color5 })
+    hl("RenderMarkdownCodeInline", { fg = color2, bg = color5 })
+    hl("RenderMarkdownQuote", { fg = color3, italic = true })
+    hl("RenderMarkdownBullet", { fg = color3 })
+
+end
 apply()
 
 vim.api.nvim_create_autocmd({ "ColorScheme", "FileType" }, {
